@@ -1,4 +1,17 @@
+server:
+  port: 8085
+
 spring:
   application:
-    name: config-server
-
+    name: configserver
+  profiles:
+    active: git
+  cloud:
+    compatibility-verifier:  #Para que Spring Cloud no bloquee el arranque por la version
+          enabled: false
+    config:
+      server:
+        git:
+          uri: https://github.com/ProjectG2ARQ/configserver-ms.git
+          clone-on-start: true
+          default-label: main
